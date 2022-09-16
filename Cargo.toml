@@ -1,5 +1,5 @@
 [package]
-name = "chalk_udp"
+name = "chalk_protocol"
 version = "0.1.0"
 edition = "2021"
 
