@@ -26,4 +26,23 @@ impl TCPClient {
         );
         Ok(self)
     }
+
+    /// Connects to an IP Address given.
+    ///
+    /// # Example
+    /// ```
+    /// use chalk_protocol::tcp::TCPClient;
+    ///
+    /// let mut client = TCPClient::new();
+    /// client.connect_to_unchecked("127.0.0.1:8080");
+    /// ```
+    pub fn connect_to_unchecked<T: ToSocketAddrs>(&mut self, addr: T) -> &mut Self {
+        self.streams.push(
+            TcpStream::connect(addr)
+                // Checks if there is an error an if so then map the error to a custom error
+                .map_err(|x| -> String { format!("Failed to Connect to IP Address: `{}`", x) })
+                .unwrap(),
+        );
+        self
+    }
 }
