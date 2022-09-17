@@ -45,6 +45,15 @@ impl TCPClient {
         self.connect_to(addr).unwrap()
     }
 
+    /// Write something to a certain index in the streams vec.
+    ///
+    /// # Example
+    /// ```no_run
+    /// use chalk_protocol::tcp::TCPClient;
+    ///
+    /// let mut client = TCPClient::new();
+    /// client.connect_to("127.0.0.1:8080").unwrap().write_to_idx(0, &[0, 1, 2]).unwrap();
+    /// ```
     pub fn write_to_idx(&mut self, idx: usize, data: &[u8]) -> Result<&mut Self, String> {
         match self.streams.get_mut(idx) {
             Some(e) => Ok(e),
