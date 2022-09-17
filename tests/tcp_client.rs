@@ -1,6 +1,7 @@
 use chalk_protocol::tcp::TCPClient;
 
-fn main() {
+#[test]
+fn tcp_client_test() {
     let mut client = TCPClient::new();
     let data = &mut [0; 3];
     client
