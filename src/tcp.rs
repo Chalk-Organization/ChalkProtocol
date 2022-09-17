@@ -13,8 +13,10 @@ impl TCPClient {
     ///
     /// # Example
     /// ```
+    /// use chalk_protocol::tcp::TCPClient;
+    ///
     /// let mut client = TCPClient::new();
-    /// cilent.connect_to("127.0.0.1:8080").unwrap();
+    /// client.connect_to("127.0.0.1:8080").unwrap();
     /// ```
     pub fn connect_to<T: ToSocketAddrs>(&mut self, addr: T) -> Result<&mut Self, String> {
         self.streams.push(
