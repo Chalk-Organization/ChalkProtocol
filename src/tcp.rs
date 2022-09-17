@@ -22,7 +22,7 @@ impl TCPClient {
     /// Connects to an IP Address given.
     ///
     /// # Example
-    /// ```
+    /// ```no_run
     /// use chalk_protocol::tcp::TCPClient;
     ///
     /// let mut client = TCPClient::new();
@@ -37,7 +37,7 @@ impl TCPClient {
     /// Panics if can't connect to IP Address.
     ///
     /// # Example
-    /// ```
+    /// ```no_run
     /// use chalk_protocol::tcp::TCPClient;
     ///
     /// let mut client = TCPClient::new();
