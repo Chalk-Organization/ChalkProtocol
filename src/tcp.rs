@@ -79,6 +79,16 @@ impl TCPClient {
         self.write(idx, data).unwrap()
     }
 
+    /// Read something from a certain stream index
+    ///
+    /// # Example
+    /// ```no_run
+    /// use chalk_protocol::tcp::TCPClient;
+    ///
+    /// let mut client = TCPClient::new();
+    /// let data = &mut [];
+    /// client.connect_to("127.0.0.1:8080").unwrap().read(0, &data);
+    /// ```
     pub fn read(&mut self, idx: usize, data: &mut [u8]) -> Result<&mut Self, String> {
         match self.streams.get_mut(idx) {
             Some(e) => Ok(e),
