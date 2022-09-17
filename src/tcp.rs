@@ -26,7 +26,7 @@ impl TCPClient {
     /// use chalk_protocol::tcp::TCPClient;
     ///
     /// let mut client = TCPClient::new();
-    /// client.connect_to("127.0.0.1:34254").unwrap();
+    /// client.connect_to("127.0.0.1:8080").unwrap();
     /// ```
     pub fn connect_to<T: ToSocketAddrs>(&mut self, addr: T) -> Result<&mut Self, String> {
         self.connect_to_inner(addr)
@@ -41,7 +41,7 @@ impl TCPClient {
     /// use chalk_protocol::tcp::TCPClient;
     ///
     /// let mut client = TCPClient::new();
-    /// client.connect_to_unchecked("127.0.0.1:34254");
+    /// client.connect_to_unchecked("127.0.0.1:8080");
     /// ```
     pub fn connect_to_unchecked<T: ToSocketAddrs>(&mut self, addr: T) -> &mut Self {
         self.connect_to_inner(addr).unwrap()
