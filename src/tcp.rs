@@ -63,4 +63,19 @@ impl TCPClient {
         .map_err(|x| format!("Failed to write to IP Address `{}`", x))?;
         Ok(self)
     }
+
+    /// Write something to a certain index in the streams vec.
+    ///
+    /// Panics if index out of bounds, or fails to write to stream.
+    ///
+    /// # Example
+    /// ```no_run
+    /// use chalk_protocol::tcp::TCPClient;
+    ///
+    /// let mut client = TCPClient::new();
+    /// client.connect_to("127.0.0.1:8080").unwrap().write_to_idx_unchecked(0, &[0, 1, 2]);
+    /// ```
+    pub fn write_to_idx_unchecked(&mut self, idx: usize, data: &[u8]) -> &mut Self {
+        self.write_to_idx(idx, data).unwrap()
+    }
 }
