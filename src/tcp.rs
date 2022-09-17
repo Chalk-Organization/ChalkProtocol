@@ -1,4 +1,7 @@
-use std::net::{TcpStream, ToSocketAddrs};
+use std::{
+    io::Write,
+    net::{TcpStream, ToSocketAddrs},
+};
 
 pub struct TCPClient {
     streams: Vec<TcpStream>,
@@ -40,5 +43,15 @@ impl TCPClient {
     /// ```
     pub fn connect_to_unchecked<T: ToSocketAddrs>(&mut self, addr: T) -> &mut Self {
         self.connect_to(addr).unwrap()
+    }
+
+    pub fn write_to_idx(&mut self, idx: usize, data: &[u8]) -> Result<&mut Self, String> {
+        match self.streams.get_mut(idx) {
+            Some(e) => Ok(e),
+            None => Err(String::from("Failed to get index")),
+        }?
+        .write(data)
+        .map_err(|x| format!("Failed to write to IP Address `{}`", x))?;
+        Ok(self)
     }
 }
