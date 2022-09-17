@@ -1,5 +1,5 @@
 use std::{
-    io::Write,
+    io::{Read, Write},
     net::{TcpStream, ToSocketAddrs},
 };
 
@@ -79,5 +79,17 @@ impl TCPClient {
         self.write(idx, data).unwrap()
     }
 
+    pub fn read(&mut self, idx: usize, data: &mut [u8]) -> Result<&mut Self, String> {
+        match self.streams.get_mut(idx) {
+            Some(e) => Ok(e),
+            None => Err(String::from("Failed to get index")),
+        }?
+        .read(data)
+        .map_err(|x| format!("Failed to read IP Address `{}`", x))?;
+        Ok(self)
+    }
+
+    pub fn read_unchecked(&mut self, idx: usize, data: &mut [u8]) -> &mut Self {
+        self.read(idx, data).unwrap()
     }
 }
