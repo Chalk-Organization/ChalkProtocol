@@ -99,6 +99,18 @@ impl TCPClient {
         Ok(self)
     }
 
+    /// Read something from a certain stream index
+    ///
+    /// Panics if can't read or index out of bounds.
+    ///
+    /// # Example
+    /// ```no_run
+    /// use chalk_protocol::tcp::TCPClient;
+    ///
+    /// let mut client = TCPClient::new();
+    /// let data = &mut [];
+    /// client.connect_to("127.0.0.1:8080").unwrap().read_unchecked(0, &data);
+    /// ```
     pub fn read_unchecked(&mut self, idx: usize, data: &mut [u8]) -> &mut Self {
         self.read(idx, data).unwrap()
     }
