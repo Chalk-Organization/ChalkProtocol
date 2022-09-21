@@ -7,16 +7,17 @@ use std::{
 mod connecting;
 
 // TODO: Documentation
-pub struct TcpClient {
-	inner: Arc<InnerTcpClient>,
+pub struct TcpClient<T> {
+	inner: Arc<InnerTcpClient<T>>,
 }
 
-pub(crate) struct InnerTcpClient {
+pub(crate) struct InnerTcpClient<T> {
 	streams: RwLock<Vec<RwLock<TcpStream>>>,
 	listeners: RwLock<Vec<RwLock<TcpListener>>>,
+	futures: RwLock<Vec<T>>,
 }
 
-impl TcpClient {
+impl<T> TcpClient<T> {
 	// TODO: Documentation
 	pub fn new() -> Self {
 		Self {
@@ -25,12 +26,13 @@ impl TcpClient {
 	}
 }
 
-impl InnerTcpClient {
+impl<T> InnerTcpClient<T> {
 	// TODO: Documentation
 	pub fn new() -> Self {
 		Self {
 			streams: RwLock::new(vec![]),
 			listeners: RwLock::new(vec![]),
+			futures: RwLock::new(vec![]),
 		}
 	}
 }
