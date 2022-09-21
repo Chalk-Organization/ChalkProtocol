@@ -6,14 +6,14 @@ use tokio::net::ToSocketAddrs;
 
 use super::{InnerTcpClient, TcpClient};
 
-impl<T> TcpClient<T> {
+impl TcpClient {
 	// TODO: Add Documentation and Fill in the body.
-	pub fn connect_to<A: ToSocketAddrs>(&self, address: A) -> &Self {
+	pub fn connect_to<T: ToSocketAddrs>(&self, address: T) -> &Self {
 		todo!()
 	}
 }
 
-impl<T> InnerTcpClient<T> {
+impl InnerTcpClient {
 	// TODO: Add Documentation and Fill in the body.
 	pub fn connect_to(self: Arc<Self>, address: SocketAddr) -> Arc<Self> {
 		todo!()
