@@ -1,8 +1,6 @@
 // TODO: Documentation
-use std::{
-	net::{TcpListener, TcpStream},
-	sync::{Arc, RwLock},
-};
+use std::sync::{Arc, RwLock};
+use tokio::net::{TcpListener, TcpStream};
 
 mod connecting;
 
