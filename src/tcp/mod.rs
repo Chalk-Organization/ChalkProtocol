@@ -1,9 +1,10 @@
 // TODO: Documentation
-
 use std::{
 	net::{TcpListener, TcpStream},
 	sync::{Arc, RwLock},
 };
+
+mod connecting;
 
 // TODO: Documentation
 pub struct TcpClient {
