@@ -3,6 +3,7 @@ use std::sync::{Arc, RwLock};
 use tokio::net::{TcpListener, TcpStream};
 
 mod connecting;
+mod messaging;
 
 // TODO: Documentation
 pub struct TcpClient {
