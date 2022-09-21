@@ -11,8 +11,8 @@ pub struct TcpClient {
 }
 
 pub(crate) struct InnerTcpClient {
-	streams: Option<RwLock<TcpStream>>,
-	listeners: Option<RwLock<TcpListener>>,
+	streams: RwLock<Option<TcpStream>>,
+	listeners: RwLock<Option<TcpListener>>,
 }
 
 impl TcpClient {
@@ -28,8 +28,8 @@ impl InnerTcpClient {
 	// TODO: Documentation
 	pub fn new() -> Self {
 		Self {
-			streams: None,
-			listeners: None,
+			streams: RwLock::new(None),
+			listeners: RwLock::new(None),
 		}
 	}
 }
