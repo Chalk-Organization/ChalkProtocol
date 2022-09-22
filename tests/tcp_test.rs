@@ -11,5 +11,7 @@ pub async fn tcp_test() -> Result<()> {
 	let mut data = [0; 4];
 	client.read(&mut data).await?;
 
+	assert_eq!(data, [1; 4]);
+
 	Ok(())
 }
