@@ -27,6 +27,8 @@ impl TcpClient {
 
 impl InnerTcpClient {
 	// TODO: Add Documentation
+	// FIXME: Errors out when called because of "operation would block." Test that fails below
+	// LINK: tests/tcp_test.rs:5
 	pub async fn read(self: Arc<Self>, data: &mut [u8]) -> Result<Arc<Self>> {
 		self.listeners
 			.write()
