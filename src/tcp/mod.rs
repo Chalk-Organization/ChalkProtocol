@@ -9,6 +9,9 @@ use tokio::net::{TcpListener, TcpStream};
 mod connecting;
 mod messaging;
 
+// SECTION: TcpClientError
+
+// TODO: Add Documentation
 #[derive(Debug)]
 pub enum TcpClientError {
 	FailedToWriteStreams,
@@ -25,17 +28,13 @@ impl Display for TcpClientError {
 
 impl Error for TcpClientError {}
 
+// !SECTION
+// SECTION: TcpClient
+
 // TODO: Documentation
 pub struct TcpClient {
 	inner: Arc<InnerTcpClient>,
 }
-
-// TODO: Documentation
-pub(crate) struct InnerTcpClient {
-	streams: RwLock<Option<TcpStream>>,
-	listeners: RwLock<Option<TcpListener>>,
-}
-
 impl TcpClient {
 	// TODO: Documentation
 	pub fn new() -> Self {
@@ -43,6 +42,15 @@ impl TcpClient {
 			inner: Arc::new(InnerTcpClient::new()),
 		}
 	}
+}
+
+// !SECTION
+// SECTION: InnerTcpClient
+
+// TODO: Documentation
+pub(crate) struct InnerTcpClient {
+	streams: RwLock<Option<TcpStream>>,
+	listeners: RwLock<Option<TcpListener>>,
 }
 
 impl InnerTcpClient {
@@ -54,3 +62,5 @@ impl InnerTcpClient {
 		}
 	}
 }
+
+// !SECTION

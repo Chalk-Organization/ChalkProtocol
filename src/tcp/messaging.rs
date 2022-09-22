@@ -6,6 +6,8 @@ use anyhow::{Ok, Result};
 
 use super::{InnerTcpClient, TcpClient, TcpClientError};
 
+// SECTION: TcpClient
+
 impl TcpClient {
 	// TODO: Add Documentation
 	pub async fn read(&self, read: &mut [u8]) -> Result<&Self> {
@@ -13,6 +15,9 @@ impl TcpClient {
 		Ok(self)
 	}
 }
+
+// !SECTION
+// SECTION: InnerTcpClient
 
 impl InnerTcpClient {
 	// TODO: Add Documentation
@@ -29,3 +34,5 @@ impl InnerTcpClient {
 		Ok(self)
 	}
 }
+
+// !SECTION

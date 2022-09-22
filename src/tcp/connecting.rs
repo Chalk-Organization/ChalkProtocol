@@ -7,6 +7,8 @@ use tokio::net::{TcpListener, TcpStream, ToSocketAddrs};
 
 use super::{InnerTcpClient, TcpClient};
 
+// SECTION: TcpClient
+
 impl TcpClient {
 	// TODO: Add Documentation.
 	pub async fn connect_to<T: ToSocketAddrs>(&self, address: T) -> Result<&Self> {
@@ -20,6 +22,9 @@ impl TcpClient {
 		Ok(self)
 	}
 }
+
+// !SECTION
+// SECTION: InnerTcpClient
 
 impl InnerTcpClient {
 	// TODO: Add Documentation.
@@ -42,3 +47,5 @@ impl InnerTcpClient {
 		Ok(self)
 	}
 }
+
+// !SECTION
