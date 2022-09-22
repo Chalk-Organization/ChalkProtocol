@@ -10,8 +10,10 @@ use super::{InnerTcpClient, TcpClient, TcpClientError};
 
 impl TcpClient {
 	// TODO: Add Documentation
-	pub async fn read(&self, read: &mut [u8]) -> Result<&Self> {
-		self.inner.clone().read(read).await?;
+	pub async fn read(&self, data: &mut [u8]) -> Result<&Self> {
+		self.inner.clone().read(data).await?;
+		Ok(self)
+	}
 		Ok(self)
 	}
 }
@@ -21,7 +23,7 @@ impl TcpClient {
 
 impl InnerTcpClient {
 	// TODO: Add Documentation
-	pub async fn read(self: Arc<Self>, read: &mut [u8]) -> Result<Arc<Self>> {
+	pub async fn read(self: Arc<Self>, data: &mut [u8]) -> Result<Arc<Self>> {
 		self.listeners
 			.write()
 			.map_err(|_| TcpClientError::FailedToWriteListeners)?
@@ -30,7 +32,7 @@ impl InnerTcpClient {
 			.accept()
 			.await?
 			.0
-			.try_read(read)?;
+			.try_read(data)?;
 		Ok(self)
 	}
 }
