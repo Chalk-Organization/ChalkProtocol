@@ -14,6 +14,10 @@ impl TcpClient {
 		self.inner.clone().read(data).await?;
 		Ok(self)
 	}
+
+	// TODO: Add Documentation
+	pub async fn write(&self, data: &[u8]) -> Result<&Self> {
+		self.inner.clone().write(data).await?;
 		Ok(self)
 	}
 }
@@ -33,6 +37,17 @@ impl InnerTcpClient {
 			.await?
 			.0
 			.try_read(data)?;
+		Ok(self)
+	}
+
+	// TODO: Add Documentation
+	pub async fn write(&self, data: &[u8]) -> Result<&Self> {
+		self.streams
+			.write()
+			.map_err(|_| TcpClientError::FailedToWriteStreams)?
+			.as_mut()
+			.ok_or(TcpClientError::UnboundStream)?
+			.try_write(data)?;
 		Ok(self)
 	}
 }
