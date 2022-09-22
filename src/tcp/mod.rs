@@ -30,6 +30,7 @@ pub struct TcpClient {
 	inner: Arc<InnerTcpClient>,
 }
 
+// TODO: Documentation
 pub(crate) struct InnerTcpClient {
 	streams: RwLock<Option<TcpStream>>,
 	listeners: RwLock<Option<TcpListener>>,
