@@ -1,9 +1,29 @@
 // TODO: Documentation
-use std::sync::{Arc, RwLock};
+use std::{
+	error::Error,
+	fmt::Display,
+	sync::{Arc, RwLock},
+};
 use tokio::net::{TcpListener, TcpStream};
 
 mod connecting;
 mod messaging;
+
+#[derive(Debug)]
+pub enum TcpClientError {
+	FailedToWriteStreams,
+	FailedToWriteListeners,
+	UnboundStream,
+	UnboundListener,
+}
+
+impl Display for TcpClientError {
+	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+		todo!()
+	}
+}
+
+impl Error for TcpClientError {}
 
 // TODO: Documentation
 pub struct TcpClient {
