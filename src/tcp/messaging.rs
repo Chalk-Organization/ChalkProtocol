@@ -27,18 +27,18 @@ impl TcpClient {
 
 impl InnerTcpClient {
 	// TODO: Add Documentation
-	// FIXME: Errors out when called because of "operation would block." Test that fails below
-	// LINK: tests/tcp_test.rs:5
 	pub async fn read(self: Arc<Self>, data: &mut [u8]) -> Result<Arc<Self>> {
-		self.listeners
+		let stream = self
+			.listeners
 			.write()
 			.map_err(|_| TcpClientError::FailedToWriteListeners)?
 			.as_mut()
 			.ok_or(TcpClientError::UnboundListener)?
 			.accept()
 			.await?
-			.0
-			.try_read(data)?;
+			.0;
+		stream.readable().await?;
+		stream.try_read(data)?;
 		Ok(self)
 	}
 
