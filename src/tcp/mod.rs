@@ -21,6 +21,7 @@ pub enum TcpClientError {
 }
 
 impl Display for TcpClientError {
+	// TODO: Add Error Messages
 	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
 		todo!()
 	}
