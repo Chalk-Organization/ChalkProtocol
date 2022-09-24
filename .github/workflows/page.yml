@@ -30,7 +30,7 @@ jobs:
         run: |
               cargo doc
               mkdir ./public
-              mv ./target/doc/chalk_protocol/* ./public/
+              mv ./target/doc/* ./public/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
