@@ -1,7 +1,7 @@
 //! Write and Reading for the `TcpClient`
 //!
 //! # Example
-//! ```
+//! ```no_run
 //! # use anyhow::{Ok, Result};
 //! # #[tokio::main]
 //! # async fn main() -> Result<()> {

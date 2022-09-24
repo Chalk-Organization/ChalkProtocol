@@ -1,7 +1,7 @@
 //! Connecting with a `TcpStream`
 //!
 //! # Example
-//! ```
+//! ```no_run
 //! # use anyhow::{Ok, Result};
 //! # #[tokio::main]
 //! # async fn main() -> Result<()> {
