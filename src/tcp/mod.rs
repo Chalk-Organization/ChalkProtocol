@@ -1,4 +1,21 @@
-// TODO: Documentation
+//! An async wrapper for `TcpStream` and `TcpListener`
+//!
+//! ```
+//! # use anyhow::{Ok, Result};
+//! # #[tokio::main]
+//! # async fn main() -> Result<()> {
+//! use chalk_protocol::tcp::TcpClient;
+//!
+//! let client = TcpClient::new();
+//! client.bind_to("127.0.0.1:36918").await?;
+//! client.connect_to("127.0.0.1:36918").await?;
+//!
+//! client.write(b"hello").await?;
+//! let mut data = [0; 5];  
+//! client.read(&mut data).await?;
+//! # Ok(())
+//! # }
+//! ```
 use std::{
 	error::Error,
 	fmt::Display,
@@ -11,7 +28,7 @@ mod messaging;
 
 // SECTION: TcpClientError
 
-// TODO: Add Documentation
+/// Errors for TcpClient
 #[derive(Debug)]
 pub enum TcpClientError {
 	FailedToWriteStreams,
@@ -40,12 +57,19 @@ impl Error for TcpClientError {}
 // !SECTION
 // SECTION: TcpClient
 
-// TODO: Documentation
+/// Async Tcp Client
 pub struct TcpClient {
 	inner: Arc<InnerTcpClient>,
 }
 impl TcpClient {
-	// TODO: Documentation
+	/// Creates a new `TcpClient`
+	///
+	/// # Example
+	/// ```
+	/// use chalk_protocol::tcp::TcpClient;
+	///
+	/// let client = TcpClient::new();
+	/// ```
 	pub fn new() -> Self {
 		Self {
 			inner: Arc::new(InnerTcpClient::new()),
@@ -56,14 +80,14 @@ impl TcpClient {
 // !SECTION
 // SECTION: InnerTcpClient
 
-// TODO: Documentation
+// Inner Tcp Client to abstract it away from the front end
 pub(crate) struct InnerTcpClient {
 	streams: RwLock<Option<TcpStream>>,
 	listeners: RwLock<Option<TcpListener>>,
 }
 
 impl InnerTcpClient {
-	// TODO: Documentation
+	/// Creates a new InnerTcpClient
 	pub fn new() -> Self {
 		Self {
 			streams: RwLock::new(None),

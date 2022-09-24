@@ -1,5 +1,18 @@
-// TODO: Add Documentation
-
+//! Connecting with a `TcpStream`
+//!
+//! # Example
+//! ```
+//! # use anyhow::{Ok, Result};
+//! # #[tokio::main]
+//! # async fn main() -> Result<()> {
+//! use chalk_protocol::tcp::TcpClient;
+//!
+//! let client = TcpClient::new();
+//! client.bind_to("128.0.0.1:36918").await?;
+//! client.connect_to("128.0.0.1:36918").await?;
+//! # Ok(())
+//! # }
+//! ```
 use std::sync::Arc;
 
 use anyhow::{anyhow, Result};
@@ -10,13 +23,40 @@ use super::{InnerTcpClient, TcpClient};
 // SECTION: TcpClient
 
 impl TcpClient {
-	// TODO: Add Documentation.
+	/// Creates a `TcpStream`.
+	///
+	/// # Example
+	/// ```
+	/// # use anyhow::{Ok, Result};
+	/// # #[tokio::main]
+	/// # async fn main() -> Result<()> {
+	/// use chalk_protocol::tcp::TcpClient;
+	///
+	/// let client = TcpClient::new();
+	/// client.bind_to("127.0.0.1:36918").await?;
+	/// client.connect_to("127.0.0.1:36918").await?;
+	/// # Ok(())
+	/// # }
+	/// ```
 	pub async fn connect_to<T: ToSocketAddrs>(&self, address: T) -> Result<&Self> {
 		self.inner.clone().connect_to(address).await?;
 		Ok(self)
 	}
 
-	// TODO: Add Documentation.
+	/// Creates a `TcpListener`.
+	///
+	/// # Example
+	/// ```
+	/// # use anyhow::{Ok, Result};
+	/// # #[tokio::main]
+	/// # async fn main() -> Result<()> {
+	/// use chalk_protocol::tcp::TcpClient;
+	///
+	/// let client = TcpClient::new();
+	/// client.bind_to("127.0.0.1:36918").await?;
+	/// # Ok(())
+	/// # }
+	/// ```
 	pub async fn bind_to<T: ToSocketAddrs>(&self, address: T) -> Result<&Self> {
 		self.inner.clone().bind_to(address).await?;
 		Ok(self)
@@ -27,7 +67,7 @@ impl TcpClient {
 // SECTION: InnerTcpClient
 
 impl InnerTcpClient {
-	// TODO: Add Documentation.
+	/// Writes to the `stream` and then creates a `TcpStream`
 	pub async fn connect_to<T: ToSocketAddrs>(self: Arc<Self>, address: T) -> Result<Arc<Self>> {
 		let _ = self
 			.streams
@@ -37,7 +77,7 @@ impl InnerTcpClient {
 		Ok(self)
 	}
 
-	// TODO: Add Documentation.
+	/// Writes to the `listeners` and then creates a `TcpListener`
 	pub async fn bind_to<T: ToSocketAddrs>(self: Arc<Self>, address: T) -> Result<Arc<Self>> {
 		let _ = self
 			.listeners
