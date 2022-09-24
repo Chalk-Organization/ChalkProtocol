@@ -28,9 +28,10 @@ jobs:
       # Runs a single command using the runners shell
       - name: Creates the Docs
         run: |
-              cargo doc
-              mkdir ./public
-              mv ./target/doc/* ./public/
+              cargo doc --no-deps
+              rm -rf ./docs
+              echo "<meta http-equiv=\"refresh\" content=\"0; url=build_wheel\">" > target/doc/index.html
+              cp -r target/doc ./public
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
