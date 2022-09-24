@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["anyhow","cfg_if","chalk_protocol","libc","log","mio","num_cpus","once_cell","pin_project_lite","proc_macro2","quote","socket2","syn","tokio","tokio_macros","unicode_ident"];
