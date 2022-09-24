@@ -28,18 +28,12 @@ jobs:
       # Runs a single command using the runners shell
       - name: Creates the Docs
         run: |
-              git checkout main
               cargo doc
-              git add -f ./target/doc/chalk_protocol
-              git checkout docs
-              mv ./target/doc/chalk_protocol/* ./
-              rm -rf ./target/
-              git add .
+              mkdir ./public
+              mv ./target/doc/chalk_protocol/* ./public/
 
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v1.0.4
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # Path of the directory containing the static assets.
-          path: ./
-          # Duration after which artifact will expire in days.
-          retention-days: 0
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
