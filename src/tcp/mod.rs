@@ -21,9 +21,17 @@ pub enum TcpClientError {
 }
 
 impl Display for TcpClientError {
-	// TODO: Add Error Messages
 	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-		todo!()
+		f.write_str(match self {
+			TcpClientError::FailedToWriteStreams => "Failed to write to Streams",
+			TcpClientError::FailedToWriteListeners => "Failed to write to Listeners",
+			TcpClientError::UnboundStream => {
+				"Stream is not bound (`client.connect_to(\"127.0.0.1:36918\")`)"
+			}
+			TcpClientError::UnboundListener => {
+				"Listener is not bound (`client.bind_to(\"127.0.0.1:36918\")`)"
+			}
+		})
 	}
 }
 
