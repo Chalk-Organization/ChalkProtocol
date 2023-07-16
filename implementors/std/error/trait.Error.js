@@ -1,3 +1,0 @@
-(function() {var implementors = {};
-implementors["chalk_protocol"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.63.0/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"enum\" href=\"chalk_protocol/tcp/enum.TcpClientError.html\" title=\"enum chalk_protocol::tcp::TcpClientError\">TcpClientError</a>","synthetic":false,"types":["chalk_protocol::tcp::TcpClientError"]}];
-if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

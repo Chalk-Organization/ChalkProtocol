@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":[["TcpClientError","Errors for TcpClient"]],"struct":[["TcpClient","Async Tcp Client"]]};
+window.SIDEBAR_ITEMS = {"enum":["TcpClientError"],"struct":["TcpClient"]};

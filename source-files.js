@@ -1,3 +1,4 @@
-var sourcesIndex = {};
-sourcesIndex["chalk_protocol"] = {"name":"","dirs":[{"name":"tcp","files":["connecting.rs","messaging.rs","mod.rs"]}],"files":["lib.rs"]};
+var sourcesIndex = JSON.parse('{\
+"chalk_protocol":["",[["tcp",[],["connecting.rs","messaging.rs","mod.rs"]]],["lib.rs"]]\
+}');
 createSourceSidebar();

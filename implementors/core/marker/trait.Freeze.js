@@ -1,3 +1,3 @@
-(function() {var implementors = {};
-implementors["chalk_protocol"] = [{"text":"impl Freeze for <a class=\"enum\" href=\"chalk_protocol/tcp/enum.TcpClientError.html\" title=\"enum chalk_protocol::tcp::TcpClientError\">TcpClientError</a>","synthetic":true,"types":["chalk_protocol::tcp::TcpClientError"]},{"text":"impl Freeze for <a class=\"struct\" href=\"chalk_protocol/tcp/struct.TcpClient.html\" title=\"struct chalk_protocol::tcp::TcpClient\">TcpClient</a>","synthetic":true,"types":["chalk_protocol::tcp::TcpClient"]}];
-if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
+(function() {var implementors = {
+"chalk_protocol":[["impl Freeze for <a class=\"enum\" href=\"chalk_protocol/tcp/enum.TcpClientError.html\" title=\"enum chalk_protocol::tcp::TcpClientError\">TcpClientError</a>",1,["chalk_protocol::tcp::TcpClientError"]],["impl Freeze for <a class=\"struct\" href=\"chalk_protocol/tcp/struct.TcpClient.html\" title=\"struct chalk_protocol::tcp::TcpClient\">TcpClient</a>",1,["chalk_protocol::tcp::TcpClient"]]]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
